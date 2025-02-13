@@ -36,11 +36,26 @@
 
 // capitalize();
 
-function lastLetter() {
-    const text = prompt("Give me a word");
-    if(!text || text.length === 1) return;
-    alert(text.slice(-1));
+// function lastLetter() {
+//     const text = prompt("Give me a word");
+//     if(!text || text.length === 1) return;
+//     alert(text.slice(-1));
 
+// }
+
+// lastLetter();
+
+
+let answer = parseInt(prompt("GAEWGAE")); 
+
+for (i = 1; i <= answer; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+        alert("FizzBuzz"); 
+    } else if (i % 3 === 0) {
+        alert("Fizz");
+    } else if (i % 5 === 0) {
+        alert("Buzz");
+    } else {
+        alert(i);
+    }
 }
-
-lastLetter();
