@@ -29,9 +29,18 @@
 
 
 
-function capitalize() {
-    const text = prompt("Tell me how you feel");
-    alert(text.charAt(0).toUpperCase() + text.slice(1));
+// function capitalize() {
+//     const text = prompt("Tell me how you feel");
+//     alert(text.charAt(0).toUpperCase() + text.slice(1));
+// }
+
+// capitalize();
+
+function lastLetter() {
+    const text = prompt("Give me a word");
+    if(!text || text.length === 1) return;
+    alert(text.slice(-1));
+
 }
 
-capitalize();
+lastLetter();
