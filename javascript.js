@@ -9,14 +9,29 @@
 
 // add7()
 
-function multiply() {
-    const a = prompt("give me a number");
-    const b = prompt("another number");
 
-    const product = (a, b) => a * b;
 
-    alert(product(a, b) );
 
+
+// Takes two numbers and returns their product
+
+// function multiply() {
+//     const a = prompt("give me a number");
+//     const b = prompt("another number");
+
+//     const product = (a, b) => a * b;
+
+//     alert(product(a, b) );
+
+// }
+
+// multiply();
+
+
+
+function capitalize() {
+    const text = prompt("Tell me how you feel");
+    alert(text.charAt(0).toUpperCase() + text.slice(1));
 }
 
-multiply();
+capitalize();
