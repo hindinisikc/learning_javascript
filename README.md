@@ -117,3 +117,75 @@ btn.addEventListener("click", draw);
 // Following this, the ctx.arc method is used to draw a circle. The method takes five parameters: the x and y coordinates of the circle's center (both generated randomly within the canvas dimensions), the radius of the circle (also generated randomly up to 50 pixels), the starting angle (0 radians), and the ending angle (2 * Math.PI radians, which represents a full circle). Finally, the ctx.fill method is called to fill the circle with the previously set color.
 
 // Overall, this function creates a visually dynamic effect by drawing 30 randomly colored and positioned circles on the canvas each time it is called.
+
+
+loop
+const results = document.querySelector("#results");
+
+function calculate() {
+    for (let i = 1; i < 10; i++) {
+        const newResults = `${i} x ${i} = ${i * i}`;
+        results.textContent += `${newResults}\n`;
+    }
+    results.textContent += "Done!";
+}
+
+const calculateBtn = document.querySelector("#calculate-button");
+const clearBtn = document.querySelector("#clear-button");
+
+calculateBtn.addEventListener("click", calculate);
+clearBtn.addEventListener("click", () => (results.textContent = ""));
+
+
+
+// An array of contact strings, each containing a name and a phone number separated by a colon.
+const contacts = [
+  "Chris:2232322",
+  "Sarah:3453456",
+  "Bill:7654322",
+  "Mary:9998769",
+  "Dianne:9384975",
+];
+
+// Selects the first <p> element in the document and assigns it to the variable 'para'.
+const para = document.querySelector("p");
+
+// Selects the first <input> element in the document and assigns it to the variable 'input'.
+const input = document.querySelector("input");
+
+// Selects the first <button> element in the document and assigns it to the variable 'btn'.
+const btn = document.querySelector("button");
+
+// Adds a click event listener to the button element.
+btn.addEventListener("click", () => {
+  // Converts the value of the input field to lowercase and assigns it to 'searchName'.
+  const searchName = input.value.toLowerCase();
+  
+  // Clears the input field.
+  input.value = "";
+  
+  // Sets focus back to the input field.
+  input.focus();
+  
+  // Clears the text content of the paragraph element.
+  para.textContent = "";
+  
+  // Iterates over each contact in the 'contacts' array.
+  for (const contact of contacts) {
+    // Splits the contact string into an array with two elements: name and phone number.
+    const splitContact = contact.split(":");
+    
+    // Checks if the name part of the contact (converted to lowercase) matches the search name.
+    if (splitContact[0].toLowerCase() === searchName) {
+      // If a match is found, sets the paragraph text content to display the contact's name and phone number.
+      para.textContent = `${splitContact[0]}'s number is ${splitContact[1]}.`;
+      // Exits the loop since the contact has been found.
+      break;
+    }
+  }
+  
+  // If no contact was found (paragraph text content is still empty), sets the paragraph text content to "Contact not found."
+  if (para.textContent === "") {
+    para.textContent = "Contact not found.";
+  }
+});

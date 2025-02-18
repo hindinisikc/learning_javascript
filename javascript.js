@@ -1,36 +1,28 @@
-const btn = document.querySelector("button");
-const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
-
-document.addEventListener("DOMContentLoaded", () => {
-    canvas.width = document.documentElement.clientWidth;
-    canvas.height = document.documentElement.clientHeight;
-});
-
-function random(number) {
-    return Math.floor(Math.random() * number);
-}
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < 30; i++) {
-    ctx.beginPath();
-    ctx.beginPath();
-    ctx.fillStyle = `rgb(${random(255)},${random(255)},${random(255)})`;
-    ctx.arc(
-    random(canvas.width), 
-    random(canvas.height), 
-    random(50), 0, 2 * Math.PI);
-    ctx.fill();
+const contacts = [
+    "Chris:2232322",
+    "Sarah:3453456",
+    "Bill:7654322",
+    "Mary:9998769",
+    "Dianne:9384975",
+  ];
+  const para = document.querySelector("p");
+  const input = document.querySelector("input");
+  const btn = document.querySelector("button");
+  
+  btn.addEventListener("click", () => {
+    const searchName = input.value.toLowerCase();
+    input.value = "";
+    input.focus();
+    para.textContent = "";
+    for (const contact of contacts) {
+      const splitContact = contact.split(":");
+      if (splitContact[0].toLowerCase() === searchName) {
+        para.textContent = `${splitContact[0]}'s number is ${splitContact[1]}.`;
+        break;
+      }
     }
-}
-
-btn.addEventListener("click", draw);
-
-// The provided JavaScript code defines a function named draw that is responsible for rendering multiple colored circles on an HTML canvas. The function begins by clearing the entire canvas using the clearRect method, which ensures that any previous drawings are removed. This method takes four parameters: the x and y coordinates of the top-left corner of the rectangle to clear (both set to 0), and the width and height of the rectangle (set to the canvas's width and height, respectively).
-
-// Next, the function enters a for loop that iterates 30 times. Within each iteration, the code starts a new path for drawing by calling ctx.beginPath(). Notably, there is a redundant call to ctx.beginPath() that can be removed without affecting the functionality. The fillStyle property of the canvas context is then set to a random RGB color. This is achieved by calling a random function (assumed to be defined elsewhere in the code) three times, each time generating a random value between 0 and 255 for the red, green, and blue components of the color.
-
-// Following this, the ctx.arc method is used to draw a circle. The method takes five parameters: the x and y coordinates of the circle's center (both generated randomly within the canvas dimensions), the radius of the circle (also generated randomly up to 50 pixels), the starting angle (0 radians), and the ending angle (2 * Math.PI radians, which represents a full circle). Finally, the ctx.fill method is called to fill the circle with the previously set color.
-
-// Overall, this function creates a visually dynamic effect by drawing 30 randomly colored and positioned circles on the canvas each time it is called.
+    if (para.textContent === "") {
+      para.textContent = "Contact not found.";
+    }
+  });
+  
